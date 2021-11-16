@@ -78,13 +78,28 @@ var cookiesOnly = function(desserts) {
 
 // return the total price of all products.
 var sumTotal = function(products) {
-
+  var res = _.reduce(products, function(acum, curr) {
+    var noSign = curr.price.split('$');
+    var numberVersion = Number.parseFloat(noSign[1]);
+    return acum + numberVersion;
+  }, 0);
+  return res;
 };
 
 // return an object consisting of dessert types and how many of each.
 // exampleOutput: { dessertType: 3, dessertType2: 1 }
 var dessertCategories = function(desserts) {
+  var typeObj = {};
 
+  var res = _.reduce(desserts, function(acum, value) {
+
+    if (typeObj[value.type] === undefined) {
+      typeObj[value.type] = 1;
+    } else {
+      typeObj[value.type]++;
+    }
+  }, 0);
+  return typeObj;
 };
 
 // given an array of movie data objects,return an array containing
