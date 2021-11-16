@@ -52,11 +52,22 @@ var onlyOneFruit = function(fruits, targetFruit) {
 // starting with the letter 'P'.
 var startsWith = function(fruits, letter) {
 
+  var res = _.filter(fruits, function(value) {
+    if (value[0] === letter) {
+      return value;
+    }
+  });
+  return res;
 };
 
 // return a filtered array containing only cookie-type desserts.
 var cookiesOnly = function(desserts) {
-
+  var res = _.filter(desserts, function(value) {
+    if (value.type === 'cookie') {
+      return value;
+    }
+  });
+  return res;
 };
 
 /*
